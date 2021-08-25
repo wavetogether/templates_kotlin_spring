@@ -1,0 +1,17 @@
+ext.getBuildConfig = {
+    // This profile list must match items in AppProfile.kt
+    def allowedBuildTargets = ["local", "alpha", "beta", "release"]
+    def buildConfig
+    if (project.hasProperty("buildConfig")) {
+        buildConfig = project.properties["buildConfig"].toString().toLowerCase(Locale.US)
+    } else {
+        buildConfig = "local"
+        println(":${project.name}:  No build configuration is specified - '$buildConfig' is used by default")
+    }
+
+    if (!allowedBuildTargets.contains(buildConfig)) {
+        throw new IllegalArgumentException("Only these build targets are accepted: $allowedBuildTargets")
+    }
+
+    return buildConfig
+}

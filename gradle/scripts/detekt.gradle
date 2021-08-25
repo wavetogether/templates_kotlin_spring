@@ -1,0 +1,30 @@
+apply plugin: "io.gitlab.arturbosch.detekt"
+apply from: "$project.rootDir/gradle/scripts/packaging.gradle"
+
+detekt {
+    def buildConfig = getBuildConfig()
+
+    toolVersion = "$version_detekt"
+    config = files("$project.rootDir/buildScripts/settings/detekt.yml")
+    input = files(
+            "src/main/java",
+            "src/main/kotlin",
+            "src/$buildConfig/java",
+            "src/$buildConfig/kotlin"
+    )
+
+    reports {
+        xml {
+            enabled = true
+            destination = file("$buildDir/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("$buildDir/reports/detekt.html")
+        }
+    }
+}
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"
+}

@@ -1,0 +1,11 @@
+jar {
+    enabled = true
+}
+
+def MODULE_APP_LIB = "app-lib"
+
+dependencies {
+    implementation project(":${MODULE_APP_LIB}")
+
+    testImplementation project(path: ":${MODULE_APP_LIB}", configuration: "testArtifacts")
+}

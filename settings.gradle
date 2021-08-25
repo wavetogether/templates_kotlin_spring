@@ -1,0 +1,5 @@
+rootProject.name = 'wave_template_kotlin_spring'
+
+include ":app-lib",
+        ":app-core",
+        ":app-main"

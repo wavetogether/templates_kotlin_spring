@@ -1,0 +1,5 @@
+= app-lib
+
+Module for logic independent to business rules.
+
+All logic in this module should keep dependencies as minimum as possible to external libraries.

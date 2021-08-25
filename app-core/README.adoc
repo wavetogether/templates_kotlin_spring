@@ -1,0 +1,5 @@
+= app-core
+
+Module to contain CORE business rules.
+
+It is STRONGLY RECOMMENDED keeping this module independent to any heavy frameworks such as Spring, to achieve maintain portability.

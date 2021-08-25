@@ -1,0 +1,29 @@
+# Configuration template file. Copy it by removing 'sample' extension to apply upon runtime.
+# These configurations will be loaded both under development and production.
+# Don't put sensitive information like passwords into source code control!
+server:
+  port: 8080
+
+spring:
+  application:
+    name: wave_template_kotlin_spring
+  profiles:
+    # Empty if 'default'.
+    active:
+  datasource:
+    # Automatic database initialisation. Maybe conflict to hibernate.
+    # https://docs.spring.io/spring-boot/docs/current/reference/html/howto-database-initialization.html
+    initialization-mode: ALWAYS
+    schema: classpath:/sql/v1.0/schemas/*.sql
+    data: classpath:/sql/v1.0/data/*.sql
+    type: com.zaxxer.hikari.HikariDataSource
+
+management:
+  server:
+    add-application-context-header: false
+
+logging:
+  file:
+    path:
+  level:
+    ROOT: INFO

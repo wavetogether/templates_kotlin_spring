@@ -1,0 +1,86 @@
+= Kotlin-Spring boot project template
+Hwan Jo <hwan@wavetogether.com>
+// Metadata:
+:description: Kotlin & Spring boot project template for rapid development setup
+:keywords: kotlin, spring, template
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 4
+:sectlinks:
+:icons: font
+// Refs:
+:link-tool-gradle: https://gradle.org/
+:link-lang-jdk: https://openjdk.java.net/
+:link-lang-kotlin: https://kotlinlang.org/
+:link-lang-groovy: https://groovy-lang.org/
+:link-tool-doc-spring-restdocs: https://spring.io/projects/spring-restdocs
+:link-tool-doc-asciidoctor: https://asciidoctor.org/docs/asciidoctor-gradle-plugin
+:link-frmwrk-undertow: http://undertow.io/
+:link-frmwrk-springboot: https://spring.io/projects/spring-boot
+
+[[overview]]
+== Overview
+
+Kotlin & Spring boot project template for rapid development setup.
+
+[[tools-frameworks]]
+== Tools and frameworks
+
+* Build tool:
+** link:{link-tool-gradle}[Gradle 7.1]
+
+* Languages and Platforms:
+** link:{link-lang-jdk}[Java 15]
+** link:{link-lang-kotlin}[Kotlin 1.5]
+** link:{link-lang-groovy}[Groovy 3.0]
+
+* Frameworks and environments:
+** link:{link-frmwrk-undertow}[Undertow]
+** link:{link-frmwrk-springboot}[Spring boot]
+
+* Code quality measurements:
+** link:{link-quality-junit5}[JUnit 5]
+** link:{link-quality-detekt}[detekt]
+
+* Automatic documentation
+** link:{link-tool-doc-spring-restdocs}[Spring RESTDocs]
+** link:{link-tool-doc-asciidoctor}[Asciidoctor]
+
+[[building-and-running]]
+== Building and running
+
+It is better to declare `JAVA_HOME` environment variable and make `java` command executable via `PATH` before following these instructions.
+
+[[how-to-build]]
+=== How to build
+
+[source,shell script]
+----
+./gradlew clean assemble [-PbuildConfig={local|alpha|beta|release}]
+----
+
+* `buildConfig` is set to `local` by default, if omitted or set to wrong value.
+* Stand-alone JAR executable is created under `app-main/build/libs` after `assemble` task is ran.
+
+[[how-to-run]]
+=== How to run
+
+You must create `application.yml` file on project root or execution context root directory before running project. There is `application.yml.sample` on project root, for quick reference.
+
+After a successful build, run server as following:
+
+[subs="attributes,verbatim"]
+----
+java -jar app-main/build/libs/{app-name}-{app-version}.jar
+----
+
+[[how-to-run-tests]]
+=== How to run tests and get reports
+
+TO-BE-DETERMINED
+
+[[how-to-measure-quality]]
+=== How to measure code quality and get reports
+
+TO-BE-DETERMINED
