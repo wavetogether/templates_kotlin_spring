@@ -2,7 +2,7 @@ buildscript {
     ext {
         // lang
         version_target_jvm = 13
-        version_kotlin = "1.5.10"
+        version_kotlin = "1.5.30"
         version_javax_validation = "2.0.1.Final"
         version_javax_inject = "1"
         version_jsr305 = "3.0.2"
@@ -15,9 +15,9 @@ buildscript {
         version_jackson_kotlin = "2.12.4"
 
         // Testing & Code quality
-        version_junit5 = "5.7.1"
+        version_junit5 = "5.7.2"
         version_detekt = "1.16.0"
-        version_jacoco = "0.8.6"
+        version_jacoco = "0.8.7"
         version_javafaker = "1.0.2"
         version_hamcrest = "2.2"
         version_mockito = "3.8.0"

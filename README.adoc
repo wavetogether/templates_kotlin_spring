@@ -57,7 +57,7 @@ It is better to declare `JAVA_HOME` environment variable and make `java` command
 
 [source,shell script]
 ----
-./gradlew clean assemble [-PbuildConfig={local|alpha|beta|release}]
+./gradlew clean assemble [-PbuildConfig=<local|alpha|beta|release>]
 ----
 
 * `buildConfig` is set to `local` by default, if omitted or set to wrong value.
@@ -70,7 +70,7 @@ You must create `application.yml` file on project root or execution context root
 
 After a successful build, run server as following:
 
-[subs="attributes,verbatim"]
+[source,shell script]
 ----
 java -jar app-main/build/libs/{app-name}-{app-version}.jar
 ----
@@ -78,7 +78,29 @@ java -jar app-main/build/libs/{app-name}-{app-version}.jar
 [[how-to-run-tests]]
 === How to run tests and get reports
 
-TO-BE-DETERMINED
+Tests must be organised by execution time, and they could be grouped as three categories:
+
+. *Small test*: a.k.a. '*Unit test*', must be run quickly and frequently.
+. *Medium test*: a.k.a. '*Integration test*', must be run before code check-in.
+. *Large test*: a.k.a. '*End-to-end test*', must be run before code integration.
+
+You can find detailed rules for test groups in link:app-lib/src/test/kotlin/testlib/com/wavetogether/TestTags.kt[TestTags.kt].
+
+* Running tests:
++
+[source,shell script]
+----
+gradlew [<smallTest|mediumTest|largeTest>|test] [jacocoTestReport]
+----
+`test` for running all tests, and other options for running tests in group, respectively.
+
+* Getting test reports:
++
+Test reports are automatically generated under `build/reports` directory of each module after all tests are run.
+
+* Getting code coverage reports:
++
+Running Gradle task `jacocoTestReport` while running tests will generate reports under `build/reports/jacoco` both in XML and HTML formats.
 
 [[how-to-measure-quality]]
 === How to measure code quality and get reports
