@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.*
 import testlib.com.wavetogether.TestTags.TEST_SMALL
+import testlib.com.wavetogether.core.domain.user.mockPersistedUser
 
 @Tag(TEST_SMALL)
 class CreateUserServiceTest {
@@ -27,7 +28,7 @@ class CreateUserServiceTest {
     this.sut = CreateUserService.newInstance(userRepository)
 
     // Let UserRepository#save acts transitively returning given object
-    `when`(userRepository.save(any())).thenAnswer { it.getArgument(0) }
+    `when`(userRepository.save(any())).thenAnswer { mockPersistedUser(it.getArgument(0)) }
   }
 
   @Test
