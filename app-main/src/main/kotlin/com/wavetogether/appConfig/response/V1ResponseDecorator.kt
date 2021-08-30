@@ -1,7 +1,7 @@
 package com.wavetogether.appConfig.response
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import com.wavetogether.endpoint.v1.AbstractGenericResponse
+import com.wavetogether.endpoint._common.response.AbstractGenericResponse
 import org.springframework.core.MethodParameter
 import org.springframework.http.MediaType
 import org.springframework.http.converter.HttpMessageConverter
