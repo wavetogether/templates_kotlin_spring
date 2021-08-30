@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
   Application().start(args)
 }
 
-@SpringBootApplication(scanBasePackages = ["com.wavetogether.appConfig"])
+@SpringBootApplication
 class Application {
   private val profile = BuildConfig.currentProfile
 
