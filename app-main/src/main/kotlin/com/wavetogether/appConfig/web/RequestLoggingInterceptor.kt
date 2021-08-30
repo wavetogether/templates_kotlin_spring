@@ -1,5 +1,6 @@
-package com.wavetogether.infrastructure.web
+package com.wavetogether.appConfig.web
 
+import com.wavetogether.infrastructure.web.extractIpStr
 import org.slf4j.LoggerFactory
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor

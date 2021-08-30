@@ -33,6 +33,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:$version_springBoot") {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
     }
+    implementation "org.springframework.boot:spring-boot-starter-validation:$version_springBoot"
     implementation "org.springframework.boot:spring-boot-starter-undertow:$version_springBoot"
 
     // Spring boot test

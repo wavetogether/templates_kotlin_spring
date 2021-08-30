@@ -1,6 +1,7 @@
 package com.wavetogether.infrastructure.web
 
 import com.wavetogether.lib.text.isNullOrUnicodeBlank
+import org.springframework.http.HttpStatus
 import java.net.InetAddress
 import javax.servlet.http.HttpServletRequest
 
@@ -44,5 +45,13 @@ fun HttpServletRequest.extractIpStr(): String {
 
 fun HttpServletRequest.extractInetAddress(): InetAddress =
   InetAddress.getByName(this.extractIpStr())
+
+fun HttpServletRequest.getStatus(): HttpStatus {
+  (this.getAttribute("javax.servlet.error.status_code") as? Int)?.let {
+    return HttpStatus.valueOf(it)
+  }
+
+  return HttpStatus.SERVICE_UNAVAILABLE
+}
 
 private fun String.isUnknown() = "unknown".equals(this, true)

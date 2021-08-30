@@ -1,4 +1,4 @@
-package com.wavetogether.appConfig.response
+package com.wavetogether.appConfig.web.advice
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.wavetogether.endpoint._common.response.AbstractGenericResponse
@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice
 
 /**
- * This class wraps all [com.fasterxml.jackson.databind.annotation.JsonSerialize] annotated raw response objects
- * within [com.wavetogether.endpoint.v1.GenericOkResponse].
+ * This class wraps all [com.fasterxml.jackson.databind.annotation.JsonSerialize] annotated values within [com.github.fj.board.endpoint.OkResponseDto].
  *
  * @author Francesco Jo(nimbusob@gmail.com)
  * @since 22 - Oct - 2018
  */
 @RestControllerAdvice
-class V1ResponseDecorator : ResponseBodyAdvice<Any> {
+class OkResponseBodyDecorator : ResponseBodyAdvice<Any> {
   override fun supports(
     returnType: MethodParameter,
     converterType: Class<out HttpMessageConverter<*>>

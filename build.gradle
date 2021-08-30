@@ -8,8 +8,8 @@ buildscript {
         version_jsr305 = "3.0.2"
 
         // Spring + infrastructure
-        version_springBoot = "2.5.3"
-        version_springBootTest = "2.5.3"
+        version_springBoot = "2.5.4"
+        version_springBootTest = "2.5.4"
 
         // Library
         version_jackson_kotlin = "2.12.4"

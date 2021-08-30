@@ -1,7 +1,6 @@
 package com.wavetogether.appConfig.web
 
 import com.wavetogether.endpoint.ApiPaths
-import com.wavetogether.infrastructure.web.RequestLoggingInterceptor
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
