@@ -1,4 +1,4 @@
-package com.wavetogether.appConfig.web
+package com.wavetogether.application.web
 
 import com.wavetogether.infrastructure.web.extractIpStr
 import org.slf4j.LoggerFactory

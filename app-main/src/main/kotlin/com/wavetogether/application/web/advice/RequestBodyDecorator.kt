@@ -1,4 +1,4 @@
-package com.wavetogether.appConfig.web.advice
+package com.wavetogether.application.web.advice
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor
 import org.springframework.web.bind.WebDataBinder

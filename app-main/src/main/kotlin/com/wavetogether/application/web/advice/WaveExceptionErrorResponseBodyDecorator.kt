@@ -1,4 +1,4 @@
-package com.wavetogether.appConfig.web.advice
+package com.wavetogether.application.web.advice
 
 import com.wavetogether.core.exception.ResourceNotFoundException
 import com.wavetogether.core.exception.WaveException

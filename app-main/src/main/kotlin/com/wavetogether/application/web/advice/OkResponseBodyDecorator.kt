@@ -1,4 +1,4 @@
-package com.wavetogether.appConfig.web.advice
+package com.wavetogether.application.web.advice
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.wavetogether.endpoint._common.response.AbstractGenericResponse
