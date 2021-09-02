@@ -1,10 +1,14 @@
 package com.wavetogether.endpoint._common.response
 
+import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
+import com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import com.wavetogether.lib.time.utcEpochSecond
 import com.wavetogether.lib.time.utcNow
 
+@JsonSerialize
 abstract class AbstractGenericResponse<T>(
   @JsonProperty
   @JsonPropertyDescription(DESC_TYPE)
@@ -30,8 +34,21 @@ abstract class AbstractGenericResponse<T>(
     )
   }
 
-  enum class Type {
-    OK,
-    ERROR
+  enum class Type(val value: String) {
+    OK("ok"),
+    ERROR("error");
+
+    @JsonValue
+    @Suppress("unused") // Used by Jackson upon serialising @JsonSerialize annotated classes
+    fun toValue(): String {
+      return value
+    }
+
+    companion object {
+      @JsonCreator(mode = JsonCreator.Mode.DELEGATING)
+      @JvmStatic
+      fun from(value: String?): Type =
+        values().firstOrNull { it.value == value } ?: throw IllegalArgumentException("Not a type string: $value")
+    }
   }
 }

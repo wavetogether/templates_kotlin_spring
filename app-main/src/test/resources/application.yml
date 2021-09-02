@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: wave_template_kotlin_spring_test

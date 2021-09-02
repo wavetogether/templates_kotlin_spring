@@ -52,7 +52,7 @@ class SpringErrorResponseBodyDecorator(
       return@map it.defaultMessage
     }.joinToString()
 
-    val response = AbstractGenericResponse.error(msg, ex.simpleName())
+    val response = AbstractGenericResponse.error(msg, EXCEPTION_BAD_REQUEST)
     return ResponseEntity(response, HttpStatus.BAD_REQUEST)
   }
 
@@ -66,7 +66,7 @@ class SpringErrorResponseBodyDecorator(
     logError(this.log, req, "Spring unhandled exception:", ex)
 
     val response = AbstractGenericResponse.error(
-      "Cannot process given request.", ex.simpleName()
+      ex.message ?: "Cannot process given request.", ex.simpleName()
     )
 
     return ResponseEntity(response, HttpStatus.BAD_REQUEST)
@@ -77,7 +77,7 @@ class SpringErrorResponseBodyDecorator(
     logError(this.log, req, "Spring unhandled exception:", ex)
 
     val response = AbstractGenericResponse.error(
-      "Resource '${req.requestURI ?: ""}' is not found.", ex.simpleName()
+      "Resource '${req.requestURI ?: ""}' is not found.", EXCEPTION_NOT_FOUND
     )
 
     return ResponseEntity(response, HttpStatus.NOT_FOUND)
@@ -97,5 +97,10 @@ class SpringErrorResponseBodyDecorator(
     logError(this.log, request, "Spring unhandled exception:", exception)
 
     return ResponseEntity(response, exception.toHttpStatus())
+  }
+
+  companion object {
+    private const val EXCEPTION_BAD_REQUEST = "BadRequestException"
+    private const val EXCEPTION_NOT_FOUND = "NotFoundException"
   }
 }

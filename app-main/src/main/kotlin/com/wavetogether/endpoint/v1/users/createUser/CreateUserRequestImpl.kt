@@ -18,7 +18,7 @@ data class CreateUserRequestImpl(
 ) {
   companion object {
     const val NAME_LENGTH_MIN = 2
-    const val NAME_LENGTH_MAX = 8
+    const val NAME_LENGTH_MAX = 24
 
     const val DESC_NAME = "A name of user."
   }
