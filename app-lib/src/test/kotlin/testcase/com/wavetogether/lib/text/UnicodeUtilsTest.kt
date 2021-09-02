@@ -1,4 +1,4 @@
-package testlib.com.wavetogether.lib.text
+package testcase.com.wavetogether.lib.text
 
 import com.wavetogether.lib.text.isNullOrUnicodeBlank
 import com.wavetogether.lib.text.unicodeGraphemeCount

@@ -1,4 +1,4 @@
-package testlib.com.wavetogether.lib.util
+package testcase.com.wavetogether.lib.util
 
 import com.wavetogether.lib.util.toArray
 import org.hamcrest.MatcherAssert.assertThat
