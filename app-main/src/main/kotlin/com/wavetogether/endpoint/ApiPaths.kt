@@ -9,4 +9,5 @@ object ApiPaths {
   const val LATEST_VERSION = V1
 
   const val USERS = "$LATEST_VERSION/users"
+  const val USERS_KEY = "$USERS/{userKey}"
 }

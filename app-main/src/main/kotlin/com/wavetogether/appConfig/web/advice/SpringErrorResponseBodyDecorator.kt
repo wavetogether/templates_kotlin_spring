@@ -1,8 +1,6 @@
 package com.wavetogether.appConfig.web.advice
 
 import com.fasterxml.jackson.core.JsonProcessingException
-import com.wavetogether.AppProfile
-import com.wavetogether.BuildConfig
 import com.wavetogether.endpoint.ApiPaths
 import com.wavetogether.endpoint._common.response.AbstractGenericResponse
 import com.wavetogether.endpoint._common.response.GenericErrorResponse
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.client.HttpServerErrorException
-import org.springframework.web.client.HttpStatusCodeException
 import org.springframework.web.servlet.NoHandlerFoundException
 import javax.servlet.http.HttpServletRequest
 import javax.validation.ValidationException
@@ -48,7 +45,7 @@ class SpringErrorResponseBodyDecorator(
   @ExceptionHandler(MethodArgumentNotValidException::class)
   fun handleMethodBindingException(req: HttpServletRequest, ex: MethodArgumentNotValidException): ResponseEntity<GenericErrorResponse> {
     this.log.error("{} {}: Illegal request from client. Constraint violations are:", req.method, req.requestURI)
-    logError(req, "Spring unhandled exception:", ex)
+    logError(this.log, req, "Spring unhandled exception:", ex)
 
     val msg = ex.bindingResult.allErrors.map {
       this.log.error("  {}", it.defaultMessage)
@@ -66,7 +63,7 @@ class SpringErrorResponseBodyDecorator(
     ValidationException::class
   )
   fun handleSpring400(req: HttpServletRequest, ex: Exception): ResponseEntity<GenericErrorResponse> {
-    logError(req, "Spring unhandled exception:", ex)
+    logError(this.log, req, "Spring unhandled exception:", ex)
 
     val response = AbstractGenericResponse.error(
       "Cannot process given request.", ex.simpleName()
@@ -77,7 +74,7 @@ class SpringErrorResponseBodyDecorator(
 
   @ExceptionHandler(NoHandlerFoundException::class, HttpRequestMethodNotSupportedException::class)
   fun handleSpring404(req: HttpServletRequest, ex: Exception): ResponseEntity<GenericErrorResponse> {
-    logError(req, "Spring unhandled exception:", ex)
+    logError(this.log, req, "Spring unhandled exception:", ex)
 
     val response = AbstractGenericResponse.error(
       "Resource '${req.requestURI ?: ""}' is not found.", ex.simpleName()
@@ -97,39 +94,8 @@ class SpringErrorResponseBodyDecorator(
       ?: HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR)
     val response = AbstractGenericResponse.error("Internal server error.", exception.simpleName())
 
-    logError(request, "Spring unhandled exception:", exception)
+    logError(this.log, request, "Spring unhandled exception:", exception)
 
     return ResponseEntity(response, exception.toHttpStatus())
   }
-
-  private fun logError(req: HttpServletRequest, message: String, ex: Exception) {
-    if (BuildConfig.currentProfile == AppProfile.RELEASE) {
-      // Minimise log outputs in RELEASE binary
-      this.log.error("{} {}: {}", req.method, req.requestURI, message)
-      this.logCauses(req, ex)
-    } else {
-      this.log.error("{} {}: {}", req.method, req.requestURI, message, ex)
-    }
-  }
-
-  private fun logCauses(req: HttpServletRequest, cause: Throwable?) {
-    if (cause == null) {
-      return
-    } else {
-      val superCause = cause.cause
-      if (superCause == null) {
-        this.log.error("""{} {}: {} ("{}")""", req.method, req.requestURI, cause::class, cause.message)
-      } else {
-        this.log.error("by {}", cause::class)
-        this.logCauses(req, superCause)
-      }
-    }
-  }
-
-  private fun Throwable.toHttpStatus(): HttpStatus = when (this) {
-    is HttpStatusCodeException -> this.statusCode
-    else -> this.cause?.toHttpStatus() ?: HttpStatus.INTERNAL_SERVER_ERROR
-  }
-
-  private fun Throwable.simpleName(): String = this::class.simpleName ?: ""
 }
