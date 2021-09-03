@@ -1,0 +1,21 @@
+apply plugin: "org.asciidoctor.convert"
+
+dependencies {
+    testImplementation "org.springframework.restdocs:spring-restdocs-core:$version_restDocs"
+    testImplementation "org.springframework.restdocs:spring-restdocs-restassured:$version_restDocs"
+    testImplementation "org.springframework.restdocs:spring-restdocs-asciidoctor:$version_restDocs"
+}
+
+asciidoctor {
+    inputs.dir "${project.buildDir}/generated-snippets"
+    /*
+     * In cases of this option is ineffective under Windows environment, you should set global environment variables
+     * via "Control Panel" > "[Advanced]" > "Environment variables..." and put values as following:
+     *
+     * set JAVA_OPTS=-Dfile.encoding=UTF-8
+     * set GRADLE_OPTS=-Dfile.encoding=UTF-8
+     *
+     * and reboot system to apply values.
+     */
+    options.encoding = "UTF-8"
+}

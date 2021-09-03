@@ -102,6 +102,20 @@ Test reports are automatically generated under `build/reports` directory of each
 +
 Running Gradle task `jacocoTestReport` while running tests will generate reports under `build/reports/jacoco` both in XML and HTML formats.
 
+[[how-to-generate-apidoc]]
+=== How to generate API documentation
+
+Simply, run tests that involving actual API calls and with `asciidoctor` task as following:
+
+[source,shell script]
+----
+gradlew [<smallTest|mediumTest|largeTest>|test] asciidoctor
+----
+
+However, it is advised to run such tests in a large scale - group them as `largeTest` - to provide a documentation that reflects client's point of view as much as possible.
+
+Thus, in this template project all `endpoint` tests are marked as `TestTags.TEST_LARGE` by default in link:app-main/src/test/kotlin/testcase/com/wavetogether/endpoint/RestAssuredTestBase.kt[RestAssuredTestBase] class.
+
 [[how-to-measure-quality]]
 === How to measure code quality and get reports
 

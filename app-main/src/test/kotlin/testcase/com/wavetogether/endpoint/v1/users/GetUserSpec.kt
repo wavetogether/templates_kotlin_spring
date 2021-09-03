@@ -7,12 +7,12 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
-import testcase.com.wavetogether.endpoint.v1.V1EndpointRestAssuredTestBase
+import testcase.com.wavetogether.endpoint.v1.V1EndpointTestBase
 import testlib.com.wavetogether.endpoint.v1.ApiPathsHelper
 import testlib.com.wavetogether.restassured.jsonHttpGet
 import java.util.*
 
-class GetUserSpec : V1EndpointRestAssuredTestBase() {
+class GetUserSpec : V1EndpointTestBase() {
   @Nested
   @DisplayName("GET /users will fail when:")
   inner class FailWhen {
@@ -20,7 +20,7 @@ class GetUserSpec : V1EndpointRestAssuredTestBase() {
     @DisplayName("key is empty(HTTP 404)")
     fun `HTTP 400 when key is empty`() {
       // expect:
-      jsonHttpGet(ApiPathsHelper.USERS_KEY("")).expectError(HttpStatus.NOT_FOUND)
+      jsonHttpGet(this@GetUserSpec, ApiPathsHelper.USERS_KEY("")).expectError(HttpStatus.NOT_FOUND)
     }
 
     @Test
@@ -30,7 +30,7 @@ class GetUserSpec : V1EndpointRestAssuredTestBase() {
       val key = UUID.randomUUID()
 
       // expect:
-      jsonHttpGet(ApiPathsHelper.USERS_KEY(key)).expectError(HttpStatus.NOT_FOUND)
+      jsonHttpGet(this@GetUserSpec, ApiPathsHelper.USERS_KEY(key)).expectError(HttpStatus.NOT_FOUND)
     }
   }
 
@@ -41,7 +41,7 @@ class GetUserSpec : V1EndpointRestAssuredTestBase() {
     val createdUser = createRandomUser(this)
 
     // then:
-    val queriedUser = jsonHttpGet(ApiPathsHelper.USERS_KEY(createdUser.key))
+    val queriedUser = jsonHttpGet(this@GetUserSpec, ApiPathsHelper.USERS_KEY(createdUser.key))
       .expectSuccess(HttpStatus.OK, UserResponseImpl::class.java)
 
     // expect:

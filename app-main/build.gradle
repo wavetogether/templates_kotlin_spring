@@ -4,6 +4,7 @@ apply plugin: "kotlin-spring"
 apply plugin: "kotlin-allopen"
 
 apply from: "$project.rootDir/gradle/scripts/packaging.gradle"
+apply from: "restDocs-asciiDoctor.gradle"
 
 def MODULE_APP_LIB = "app-lib"
 def MODULE_APP_CORE = "app-core"
