@@ -1,0 +1,43 @@
+= wave_template_kotlin_spring API documentation
+Author name <author@wavetogether.com>
+v1.0
+// Metadata:
+:description: The description of this page.
+:keywords: API, documentation
+// Settings:
+:doctype: book
+:toc: left
+:toclevels: 5
+:sectlinks:
+:icons: font
+:idprefix:
+:idseparator: -
+:version-label:
+// asciidoc configuration
+:dir-htmlbase: {docdir}/src/docs/asciidoc/fragments
+// Refs:
+:project: wave_template_kotlin_spring
+:url-project: https://github.com/wavetogether/templates_kotlin_spring
+:url-docs: {url-project}/README.md
+// Macros:
+:operation-http-request-title: Example request
+:operation-http-response-title: Example response
+
+[[overview]]
+== Overview
+
+API documentation of `{project}`.
+
+[[common-payloads]]
+== Common payloads
+
+List of common payloads in every request and/or responses.
+
+include::{dir-htmlbase}/CommonPayloads.adoc[]
+
+[[api-operations]]
+== API operations
+
+List of all API operations and error situations.
+
+include::{dir-htmlbase}/APIOperations.adoc[]

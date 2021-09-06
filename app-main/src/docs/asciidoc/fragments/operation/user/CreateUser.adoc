@@ -1,0 +1,30 @@
+:snippets: {docdir}/build/generated-snippets/
+:operation: testcase.com.wavetogether.endpoint.v1.users.CreateUserSpec$
+
+[[api-operations-user-create]]
+==== Create User
+:success: {operation}Creating user will success with valid request
+
+===== Example request
+include::{snippets}/{success}/http-request.adoc[]
+
+// Request fields
+
+===== Example response
+include::{snippets}/{success}/http-response.adoc[]
+
+// Response fields
+
+===== Error situations:
+
+====== Fail if `name` is shorter than 2 characters (HTTP 400)
+:errdir: {snippets}/{operation}FailIfArgumentsAreWrong$`name` is shorter than 2 characters
+
+include::{errdir}/http-request.adoc[]
+include::{errdir}/http-response.adoc[]
+
+====== Fail if `name` is longer than 24 characters (HTTP 400)
+:errdir: {snippets}/{operation}FailIfArgumentsAreWrong$`name` is longer than 24 characters
+
+include::{errdir}/http-request.adoc[]
+include::{errdir}/http-response.adoc[]

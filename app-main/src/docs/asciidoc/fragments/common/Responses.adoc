@@ -1,0 +1,33 @@
+[[common-payloads-responses]]
+=== Common responses
+
+Responses are wrapped in following JSON body:
+
+[source,json]
+----
+{
+  "body" : object,
+  "timestamp" : number,
+  "type" : "OK" | "ERROR"
+}
+----
+|===
+| Path | Type | Description
+
+| `+body+`
+| `+object+`
+| Wrapper object of actual response.
+
+| `+timestamp+`
+| `+number+`
+| UTC based UNIX timestamp when server made this response.
+
+| `+type+`
+| `+string+`
+| Reserved value to indicate whether this envelope includes a requested object(`OK`) or error(`ERROR`).
+|===
+
+[[common-payloads-responses-user]]
+==== Common responses: User
+
+include::response/user/UserResponse.adoc[]

@@ -1,0 +1,14 @@
+[[common-payloads-responses-user-UserResponse]]
+===== UserResponse
+|===
+| Path | Type | Description
+
+| `+key+`
+| `+string+`
+| A string value to identify this user.
+
+| `+name+`
+| `+string+`
+| Name of this user.
+
+|===

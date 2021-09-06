@@ -1,0 +1,30 @@
+:snippets: {docdir}/build/generated-snippets/
+:operation: testcase.com.wavetogether.endpoint.v1.users.GetUserSpec$
+
+[[api-operations-user-get]]
+==== Get User
+:success: {operation}Can find a user whom corresponds to given key
+
+===== Example request
+include::{snippets}/{success}/http-request.adoc[]
+
+// Request fields
+
+===== Example response
+include::{snippets}/{success}/http-response.adoc[]
+
+// Response fields
+
+===== Error situations:
+
+====== Fail if `key` is empty (HTTP 404)
+:errdir: {snippets}/{operation}FailWhen$key is empty(HTTP 404)
+
+include::{errdir}/http-request.adoc[]
+include::{errdir}/http-response.adoc[]
+
+====== Fail if user corresponds to `key` is not found (HTTP 404)
+:errdir: {snippets}/{operation}FailWhen$key of user is not found(HTTP 404)
+
+include::{errdir}/http-request.adoc[]
+include::{errdir}/http-response.adoc[]

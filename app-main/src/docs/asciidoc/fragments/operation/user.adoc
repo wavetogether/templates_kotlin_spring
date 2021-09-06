@@ -1,0 +1,7 @@
+[[api-operations-user]]
+=== /users
+
+List of `/users` APIs:
+
+include::user/CreateUser.adoc[]
+include::user/GetUser.adoc[]
