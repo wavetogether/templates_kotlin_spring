@@ -1,4 +1,4 @@
-apply plugin: "org.asciidoctor.convert"
+apply plugin: "org.asciidoctor.jvm.convert"
 
 dependencies {
     testImplementation "org.springframework.restdocs:spring-restdocs-core:$version_restDocs"
