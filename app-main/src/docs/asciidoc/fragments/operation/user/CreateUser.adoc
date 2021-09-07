@@ -6,25 +6,37 @@
 :success: {operation}Creating user will success with valid request
 
 ===== Example request
+- Request:
++
 include::{snippets}/{success}/http-request.adoc[]
 
-// Request fields
+- Fields description:
++
+include::{snippets}/{success}/request-fields.adoc[]
 
 ===== Example response
+- Type: link:#common-payloads-responses-user-UserResponse[`ResponseBody<UserResponse>`]
++
 include::{snippets}/{success}/http-response.adoc[]
-
-// Response fields
 
 ===== Error situations:
 
 ====== Fail if `name` is shorter than 2 characters (HTTP 400)
 :errdir: {snippets}/{operation}FailIfArgumentsAreWrong$`name` is shorter than 2 characters
 
+- Request:
++
 include::{errdir}/http-request.adoc[]
+- Response: link:#common-payloads-responses-error[`ResponseBody<ErrorResponse>`]
++
 include::{errdir}/http-response.adoc[]
 
 ====== Fail if `name` is longer than 24 characters (HTTP 400)
 :errdir: {snippets}/{operation}FailIfArgumentsAreWrong$`name` is longer than 24 characters
 
+- Request:
++
 include::{errdir}/http-request.adoc[]
+- Response: link:#common-payloads-responses-error[`ResponseBody<ErrorResponse>`]
++
 include::{errdir}/http-response.adoc[]

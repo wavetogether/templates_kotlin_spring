@@ -6,25 +6,33 @@
 :success: {operation}Can find a user whom corresponds to given key
 
 ===== Example request
+- Request:
++
 include::{snippets}/{success}/http-request.adoc[]
 
-// Request fields
-
 ===== Example response
+- Type: link:#common-payloads-responses-user-UserResponse[`ResponseBody<UserResponse>`]
++
 include::{snippets}/{success}/http-response.adoc[]
-
-// Response fields
 
 ===== Error situations:
 
 ====== Fail if `key` is empty (HTTP 404)
 :errdir: {snippets}/{operation}FailWhen$key is empty(HTTP 404)
 
+- Request:
++
 include::{errdir}/http-request.adoc[]
+- Response: link:#common-payloads-responses-error[`ResponseBody<ErrorResponse>`]
++
 include::{errdir}/http-response.adoc[]
 
 ====== Fail if user corresponds to `key` is not found (HTTP 404)
 :errdir: {snippets}/{operation}FailWhen$key of user is not found(HTTP 404)
 
+- Request:
++
 include::{errdir}/http-request.adoc[]
+- Response: link:#common-payloads-responses-error[`ResponseBody<ErrorResponse>`]
++
 include::{errdir}/http-response.adoc[]

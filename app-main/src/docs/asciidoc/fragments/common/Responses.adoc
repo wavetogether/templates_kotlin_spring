@@ -1,7 +1,7 @@
 [[common-payloads-responses]]
-=== Common responses
+=== Common response envelope
 
-Responses are wrapped in following JSON body:
+Responses are wrapped in following JSON envelope:
 
 [source,json]
 ----
@@ -25,6 +25,32 @@ Responses are wrapped in following JSON body:
 | `+type+`
 | `+string+`
 | Reserved value to indicate whether this envelope includes a requested object(`OK`) or error(`ERROR`).
+|===
+
+[[common-payloads-responses-error]]
+==== Error response body
+
+This response appears when common response `type` is `ERROR`.
+
+[source,json]
+----
+{
+  "message" : string,
+  "cause" : string
+}
+----
+
+|===
+| Path | Type | Description
+
+| `+message+`
+| `+string+`
+| Error message for request.
+
+| `+cause+`
+| `+string+`
+| A detailed error cause. Usually this value is used for identifying error situation.
+
 |===
 
 [[common-payloads-responses-user]]

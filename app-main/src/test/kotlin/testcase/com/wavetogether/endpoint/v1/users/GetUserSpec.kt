@@ -1,6 +1,7 @@
 package testcase.com.wavetogether.endpoint.v1.users
 
 import com.wavetogether.endpoint.v1.users._common.UserResponseImpl
+import io.restassured.response.Response
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.DisplayName
@@ -8,9 +9,10 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInfo
 import org.springframework.http.HttpStatus
+import org.springframework.restdocs.payload.ResponseFieldsSnippet
 import testcase.com.wavetogether.endpoint.v1.V1EndpointTestBase
 import testlib.com.wavetogether.endpoint.v1.ApiPathsHelper
-import testlib.com.wavetogether.restassured.jsonHttpGet
+import testlib.com.wavetogether.restassured.errorResponseEnvelope
 import java.util.*
 
 class GetUserSpec : V1EndpointTestBase() {
@@ -21,7 +23,7 @@ class GetUserSpec : V1EndpointTestBase() {
     @DisplayName("key is empty(HTTP 404)")
     fun `HTTP 400 when key is empty`(testInfo: TestInfo) {
       // expect:
-      jsonHttpGet(this@GetUserSpec, testInfo, ApiPathsHelper.USERS_KEY("")).expectError(HttpStatus.NOT_FOUND)
+      requestFail(testInfo, ApiPathsHelper.USERS_KEY(""), HttpStatus.NOT_FOUND)
     }
 
     @Test
@@ -31,7 +33,7 @@ class GetUserSpec : V1EndpointTestBase() {
       val key = UUID.randomUUID()
 
       // expect:
-      jsonHttpGet(this@GetUserSpec, testInfo, ApiPathsHelper.USERS_KEY(key)).expectError(HttpStatus.NOT_FOUND)
+      requestFail(testInfo, ApiPathsHelper.USERS_KEY(key), HttpStatus.NOT_FOUND)
     }
   }
 
@@ -42,10 +44,20 @@ class GetUserSpec : V1EndpointTestBase() {
     val createdUser = createRandomUser(this)
 
     // then:
-    val queriedUser = jsonHttpGet(this@GetUserSpec, testInfo, ApiPathsHelper.USERS_KEY(createdUser.key))
-      .expectSuccess(HttpStatus.OK, UserResponseImpl::class.java)
+    val queriedUser = requestSuccess(testInfo, ApiPathsHelper.USERS_KEY(createdUser.key))
 
     // expect:
     assertThat(queriedUser, `is`(createdUser))
+  }
+
+  private fun requestFail(testInfo: TestInfo, endpoint: String, status: HttpStatus) =
+    sendRequest(testInfo, endpoint, errorResponseEnvelope()).expectError(status)
+
+  private fun requestSuccess(testInfo: TestInfo, endpoint: String) =
+    sendRequest(testInfo, endpoint, userResponseSnippets())
+      .expectSuccess(HttpStatus.OK, UserResponseImpl::class.java)
+
+  private fun sendRequest(testInfo: TestInfo, endpoint: String, responseFields: ResponseFieldsSnippet): Response {
+    return jsonHttpGet(testInfo, endpoint, null, responseFields)
   }
 }

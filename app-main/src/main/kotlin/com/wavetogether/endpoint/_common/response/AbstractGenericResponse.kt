@@ -23,6 +23,10 @@ abstract class AbstractGenericResponse<T>(
   abstract val body: T
 
   companion object {
+    const val FIELD_TYPE = "type"
+    const val FIELD_TIMESTAMP = "timestamp"
+    const val FIELD_BODY = "body"
+
     const val DESC_TYPE = "Type of enclosing response. Either be 'OK' or 'ERROR'."
     const val DESC_TIMESTAMP = "UNIX epoch timestamp of request negotiation."
     const val DESC_BODY = "An actual payload of this response object."

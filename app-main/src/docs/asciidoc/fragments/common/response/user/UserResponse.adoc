@@ -1,5 +1,13 @@
 [[common-payloads-responses-user-UserResponse]]
 ===== UserResponse
+[source,json]
+----
+{
+  "key" : string,
+  "name" : string
+}
+----
+
 |===
 | Path | Type | Description
 

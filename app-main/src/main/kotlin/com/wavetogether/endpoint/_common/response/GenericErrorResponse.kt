@@ -22,6 +22,9 @@ data class GenericErrorResponse(
   )
 
   companion object {
+    const val FIELD_MESSAGE = "message"
+    const val FIELD_CAUSE = "cause"
+
     const val DESC_BODY_MESSAGE = "Detailed message of this error. Human readable hint text."
     const val DESC_BODY_CAUSE = "Cause of this error. Utilised for detecting reasons programmatically."
   }

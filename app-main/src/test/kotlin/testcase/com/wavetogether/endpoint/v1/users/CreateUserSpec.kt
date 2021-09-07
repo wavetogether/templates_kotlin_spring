@@ -3,6 +3,7 @@ package testcase.com.wavetogether.endpoint.v1.users
 import com.wavetogether.endpoint.ApiPaths
 import com.wavetogether.endpoint.v1.users._common.UserResponseImpl
 import com.wavetogether.endpoint.v1.users.createUser.CreateUserRequestImpl
+import io.restassured.response.Response
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.DisplayName
@@ -10,9 +11,14 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInfo
 import org.springframework.http.HttpStatus
+import org.springframework.restdocs.payload.JsonFieldType
+import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
+import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
+import org.springframework.restdocs.payload.RequestFieldsSnippet
+import org.springframework.restdocs.payload.ResponseFieldsSnippet
 import testcase.com.wavetogether.endpoint.v1.V1EndpointTestBase
 import testlib.com.wavetogether.lib.text.randomAlphaNumeric
-import testlib.com.wavetogether.restassured.jsonHttpPost
+import testlib.com.wavetogether.restassured.errorResponseEnvelope
 
 class CreateUserSpec : V1EndpointTestBase() {
   @Nested
@@ -42,8 +48,7 @@ class CreateUserSpec : V1EndpointTestBase() {
 
     private fun expectBadRequestException(testInfo: TestInfo, requestBody: CreateUserRequestImpl) {
       // then:
-      val response = jsonHttpPost(this@CreateUserSpec, testInfo, ApiPaths.USERS, requestBody)
-        .expectError(HttpStatus.BAD_REQUEST)
+      val response = requestFail(testInfo, ApiPaths.USERS, requestBody, HttpStatus.BAD_REQUEST)
 
       // expect:
       assertThat(response.cause, `is`("BadRequestException"))
@@ -55,15 +60,38 @@ class CreateUserSpec : V1EndpointTestBase() {
   fun `creating user will success with valid request`(testInfo: TestInfo) {
     // given:
     val name = randomAlphaNumeric(CreateUserRequestImpl.NAME_LENGTH_MIN, CreateUserRequestImpl.NAME_LENGTH_MAX)
-    val request = CreateUserRequestImpl.createRandom(
-      name = name
-    )
+    val request = CreateUserRequestImpl.createRandom(name = name)
 
     // then:
-    val response = jsonHttpPost(this@CreateUserSpec, testInfo, ApiPaths.USERS, request)
-      .expectSuccess(HttpStatus.OK, UserResponseImpl::class.java)
+    val response = requestSuccess(testInfo, ApiPaths.USERS, request)
 
     // expect:
     assertThat(response.name, `is`(name))
   }
+
+  private fun requestFail(testInfo: TestInfo, endpoint: String, request: Any?, status: HttpStatus) =
+    sendRequest(testInfo, endpoint, request, createUserRequestSnippets(), errorResponseEnvelope())
+      .expectError(status)
+
+  private fun requestSuccess(testInfo: TestInfo, endpoint: String, request: Any?) =
+    sendRequest(testInfo, endpoint, request, createUserRequestSnippets(), userResponseSnippets())
+      .expectSuccess(HttpStatus.OK, UserResponseImpl::class.java)
+
+  private fun sendRequest(
+    testInfo: TestInfo,
+    endpoint: String,
+    request: Any?,
+    requestFields: RequestFieldsSnippet,
+    responseFields: ResponseFieldsSnippet
+  ): Response {
+    return jsonHttpPost(testInfo, endpoint, request, requestFields, responseFields)
+  }
+}
+
+private fun createUserRequestSnippets(): RequestFieldsSnippet {
+  return requestFields(
+    fieldWithPath("name")
+      .type(JsonFieldType.STRING)
+      .description(CreateUserRequestImpl.DESC_NAME)
+  )
 }
