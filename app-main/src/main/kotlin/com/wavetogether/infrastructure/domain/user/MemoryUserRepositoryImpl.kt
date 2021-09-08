@@ -1,4 +1,4 @@
-package com.wavetogether.infrastruture.domain.user
+package com.wavetogether.infrastructure.domain.user
 
 import com.wavetogether.core.domain.user.User
 import com.wavetogether.core.domain.user.UserRepository

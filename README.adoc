@@ -119,4 +119,18 @@ Thus, in this template project all `endpoint` tests are marked as `TestTags.TEST
 [[how-to-measure-quality]]
 === How to measure code quality and get reports
 
-TO-BE-DETERMINED
+. Generating detekt code analysis report
++
+[source,shell script]
+----
+gradlew [:<GRADLE_MODULE_NAME>:]detekt
+----
+detekt report file is created as `build/reports/detekt.html` per module if module name is omitted.
+
+. Generating jacoco code coverage report
++
+[source,shell script]
+----
+gradlew [<smallTest|mediumTest|largeTest>|test] jacocoTestReport
+----
+jacoco coverage report file is created under `build/reports/jacoco/` directory if tests are executed successfully.

@@ -5,7 +5,7 @@ detekt {
     def buildConfig = getBuildConfig()
 
     toolVersion = "$version_detekt"
-    config = files("$project.rootDir/buildScripts/settings/detekt.yml")
+    config = files("$project.rootDir/gradle/scripts/settings/detekt.yml")
     input = files(
             "src/main/java",
             "src/main/kotlin",
@@ -26,5 +26,5 @@ detekt {
 }
 
 dependencies {
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:$version_detekt"
 }

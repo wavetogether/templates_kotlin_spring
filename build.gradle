@@ -16,7 +16,7 @@ buildscript {
 
         // Testing & Code quality
         version_junit5 = "5.7.2"
-        version_detekt = "1.16.0"
+        version_detekt = "1.18.1"
         version_jacoco = "0.8.7"
         version_javafaker = "1.0.2"
         version_hamcrest = "2.2"

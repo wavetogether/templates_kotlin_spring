@@ -1,7 +1,7 @@
 package testcase.com.wavetogether.infrastruture.domain.user
 
 import com.github.javafaker.Faker
-import com.wavetogether.infrastruture.domain.user.MemoryUserRepositoryImpl
+import com.wavetogether.infrastructure.domain.user.MemoryUserRepositoryImpl
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.CoreMatchers.nullValue
 import org.hamcrest.MatcherAssert.assertThat
