@@ -4,4 +4,4 @@ open class ResourceNotFoundException(
   override val message: String? = null,
   override val cause: Throwable? = null,
   situation: ExceptionalSituation
-): WaveException(message, cause, situation)
+) : WaveException(message, cause, situation)

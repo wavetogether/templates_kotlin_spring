@@ -4,6 +4,7 @@ import com.wavetogether.infrastructure.web.extractIpStr
 import org.slf4j.LoggerFactory
 import org.springframework.web.method.HandlerMethod
 import org.springframework.web.servlet.HandlerInterceptor
+import java.util.*
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
@@ -21,7 +22,7 @@ class RequestLoggingInterceptor : HandlerInterceptor {
       val hm = handler.method
       val className = hm.declaringClass.canonicalName
       val methodName = hm.name
-      String.format("%s#%s", className, methodName)
+      String.format(Locale.US, "%s#%s", className, methodName)
     } else {
       handler.javaClass.toString()
     }

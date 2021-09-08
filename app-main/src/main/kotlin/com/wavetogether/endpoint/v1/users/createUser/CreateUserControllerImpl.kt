@@ -2,7 +2,7 @@ package com.wavetogether.endpoint.v1.users.createUser
 
 import com.wavetogether.endpoint.v1.users.CreateUserController
 import com.wavetogether.core.service.user.CreateUserService
-import com.wavetogether.endpoint.v1.users._common.UserResponseImpl
+import com.wavetogether.endpoint.v1.users.common.UserResponseImpl
 import org.slf4j.Logger
 import org.springframework.web.bind.annotation.RestController
 

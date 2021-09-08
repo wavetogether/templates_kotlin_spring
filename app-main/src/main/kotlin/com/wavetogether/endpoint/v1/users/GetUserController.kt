@@ -1,7 +1,7 @@
 package com.wavetogether.endpoint.v1.users
 
 import com.wavetogether.endpoint.ApiPaths
-import com.wavetogether.endpoint.v1.users._common.UserResponseImpl
+import com.wavetogether.endpoint.v1.users.common.UserResponseImpl
 import com.wavetogether.lib.text.REGEX_UUID
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PathVariable

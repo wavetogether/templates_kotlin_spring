@@ -1,4 +1,4 @@
-package com.wavetogether.endpoint.v1.users._common
+package com.wavetogether.endpoint.v1.users.common
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription

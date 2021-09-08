@@ -1,11 +1,11 @@
 package testcase.com.wavetogether.endpoint.v1
 
-import com.wavetogether.endpoint._common.response.AbstractGenericResponse
-import com.wavetogether.endpoint._common.response.AbstractGenericResponse.Companion.FIELD_BODY
-import com.wavetogether.endpoint._common.response.AbstractGenericResponse.Companion.FIELD_TYPE
-import com.wavetogether.endpoint._common.response.GenericErrorResponse
-import com.wavetogether.endpoint._common.response.GenericErrorResponse.Companion.FIELD_CAUSE
-import com.wavetogether.endpoint._common.response.GenericErrorResponse.Companion.FIELD_MESSAGE
+import com.wavetogether.endpoint.common.response.AbstractGenericResponse
+import com.wavetogether.endpoint.common.response.AbstractGenericResponse.Companion.FIELD_BODY
+import com.wavetogether.endpoint.common.response.AbstractGenericResponse.Companion.FIELD_TYPE
+import com.wavetogether.endpoint.common.response.GenericErrorResponse
+import com.wavetogether.endpoint.common.response.GenericErrorResponse.Companion.FIELD_CAUSE
+import com.wavetogether.endpoint.common.response.GenericErrorResponse.Companion.FIELD_MESSAGE
 import io.restassured.response.Response
 import io.restassured.response.ValidatableResponse
 import org.hamcrest.CoreMatchers.`is`

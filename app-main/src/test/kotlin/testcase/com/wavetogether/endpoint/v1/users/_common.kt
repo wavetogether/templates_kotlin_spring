@@ -2,7 +2,7 @@ package testcase.com.wavetogether.endpoint.v1.users
 
 import com.github.javafaker.Faker
 import com.wavetogether.endpoint.ApiPaths
-import com.wavetogether.endpoint.v1.users._common.UserResponseImpl
+import com.wavetogether.endpoint.v1.users.common.UserResponseImpl
 import com.wavetogether.endpoint.v1.users.createUser.CreateUserRequestImpl
 import org.springframework.http.HttpStatus
 import org.springframework.restdocs.payload.JsonFieldType

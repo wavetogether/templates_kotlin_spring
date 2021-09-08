@@ -1,9 +1,9 @@
-package com.wavetogether.endpoint._common.response
+package com.wavetogether.endpoint.common.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyDescription
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
-import com.wavetogether.endpoint._common.response.PageableResponse.Body
+import com.wavetogether.endpoint.common.response.PageableResponse.Body
 
 @JsonSerialize
 data class PageableResponse<K, T>(

@@ -5,7 +5,6 @@ import com.wavetogether.core.service.user.CreateUserService
 import com.wavetogether.core.service.user.SearchUserService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.stereotype.Component
 
 @Configuration
 class UserServiceBeansConfig {

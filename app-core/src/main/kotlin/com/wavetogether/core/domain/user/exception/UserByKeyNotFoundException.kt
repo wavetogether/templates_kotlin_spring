@@ -2,7 +2,6 @@ package com.wavetogether.core.domain.user.exception
 
 import com.wavetogether.core.domain.user.UserExceptions
 import com.wavetogether.core.exception.ResourceNotFoundException
-import com.wavetogether.core.exception.WaveException
 import java.util.*
 
 class UserByKeyNotFoundException(

@@ -280,7 +280,7 @@ formatting:
   ArgumentListWrapping:
     active: false
     autoCorrect: true
-    indentSize: 4
+    indentSize: 2
     maxLineLength: 120
   ChainWrapping:
     active: true
@@ -304,7 +304,7 @@ formatting:
   Indentation:
     active: false
     autoCorrect: true
-    indentSize: 4
+    indentSize: 2
     continuationIndentSize: 4
   MaximumLineLength:
     active: true
@@ -335,7 +335,7 @@ formatting:
     active: true
     autoCorrect: true
   NoMultipleSpaces:
-    active: true
+    active: false
     autoCorrect: true
   NoSemicolons:
     active: true
@@ -350,14 +350,14 @@ formatting:
     active: true
     autoCorrect: true
   NoWildcardImports:
-    active: true
+    active: false
   PackageName:
     active: true
     autoCorrect: true
   ParameterListWrapping:
     active: true
     autoCorrect: true
-    indentSize: 4
+    indentSize: 2
     maxLineLength: 120
   SpacingAroundAngleBrackets:
     active: false
@@ -795,5 +795,9 @@ style:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     excludeImports:
+      - 'java.*'
+      - 'javax.*'
+      - 'kotlin.*'
       - 'java.util.*'
       - 'kotlinx.android.synthetic.*'
+      - 'io.ktor.*'

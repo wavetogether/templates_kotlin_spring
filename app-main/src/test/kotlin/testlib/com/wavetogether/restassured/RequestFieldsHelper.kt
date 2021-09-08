@@ -1,7 +1,7 @@
 package testlib.com.wavetogether.restassured
 
-import com.wavetogether.endpoint._common.response.AbstractGenericResponse
-import com.wavetogether.endpoint._common.response.GenericErrorResponse
+import com.wavetogether.endpoint.common.response.AbstractGenericResponse
+import com.wavetogether.endpoint.common.response.GenericErrorResponse
 import org.springframework.restdocs.payload.JsonFieldType
 import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.responseFields

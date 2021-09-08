@@ -4,7 +4,6 @@ import com.wavetogether.core.domain.user.UserRepository
 import com.wavetogether.infrastructure.domain.user.MemoryUserRepositoryImpl
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.stereotype.Component
 
 @Configuration
 class UserBeansConfig {

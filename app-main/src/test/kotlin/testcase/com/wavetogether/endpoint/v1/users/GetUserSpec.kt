@@ -1,6 +1,6 @@
 package testcase.com.wavetogether.endpoint.v1.users
 
-import com.wavetogether.endpoint.v1.users._common.UserResponseImpl
+import com.wavetogether.endpoint.v1.users.common.UserResponseImpl
 import io.restassured.response.Response
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat

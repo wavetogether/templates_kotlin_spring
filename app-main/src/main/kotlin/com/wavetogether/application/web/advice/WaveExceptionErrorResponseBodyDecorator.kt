@@ -2,8 +2,8 @@ package com.wavetogether.application.web.advice
 
 import com.wavetogether.core.exception.ResourceNotFoundException
 import com.wavetogether.core.exception.WaveException
-import com.wavetogether.endpoint._common.response.AbstractGenericResponse
-import com.wavetogether.endpoint._common.response.GenericErrorResponse
+import com.wavetogether.endpoint.common.response.AbstractGenericResponse
+import com.wavetogether.endpoint.common.response.GenericErrorResponse
 import org.slf4j.Logger
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

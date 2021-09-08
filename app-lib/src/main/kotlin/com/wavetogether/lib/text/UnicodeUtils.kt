@@ -31,7 +31,6 @@ fun String.unicodeGraphemeCount(): Int {
  *
  * Type notation to ensure this collection is immutable even though a reference leakage happens
  */
-@Suppress("DuplicatedCode")
 private val UNICODE_BLANK_CHARS: Set<Char> = setOf(
   '\u0009', // control-0009
   '\u000A', // control-000A

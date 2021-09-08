@@ -2,8 +2,8 @@ package com.wavetogether.application.web.advice
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.wavetogether.endpoint.ApiPaths
-import com.wavetogether.endpoint._common.response.AbstractGenericResponse
-import com.wavetogether.endpoint._common.response.GenericErrorResponse
+import com.wavetogether.endpoint.common.response.AbstractGenericResponse
+import com.wavetogether.endpoint.common.response.GenericErrorResponse
 import org.slf4j.Logger
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.http.HttpStatus
@@ -43,7 +43,10 @@ class SpringErrorResponseBodyDecorator(
 ) : ErrorController {
   // Suppose that javax.validation is used only on Controller methods.
   @ExceptionHandler(MethodArgumentNotValidException::class)
-  fun handleMethodBindingException(req: HttpServletRequest, ex: MethodArgumentNotValidException): ResponseEntity<GenericErrorResponse> {
+  fun handleMethodBindingException(
+    req: HttpServletRequest,
+    ex: MethodArgumentNotValidException
+  ): ResponseEntity<GenericErrorResponse> {
     this.log.error("{} {}: Illegal request from client. Constraint violations are:", req.method, req.requestURI)
     logError(this.log, req, "Spring unhandled exception:", ex)
 
