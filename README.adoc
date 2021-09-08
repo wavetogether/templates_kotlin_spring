@@ -24,6 +24,11 @@ Hwan Jo <hwan@wavetogether.com>
 
 Kotlin & Spring boot project template for rapid development setup.
 
+Template branches:
+
+- `main` - Simplest.
+- `spring-data-jpa` - JPA on simplest version
+
 [[tools-frameworks]]
 == Tools and frameworks
 
