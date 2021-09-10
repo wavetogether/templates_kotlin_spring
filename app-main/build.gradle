@@ -42,8 +42,16 @@ dependencies {
     // Jackson Kotlin support
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$version_jackson_kotlin"
 
+    // Spring Data + JPA
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:$version_springBoot"
+    implementation "com.zaxxer:HikariCP:$version_hikariCP"
+
+    // DBMS: Change this to your favourite database
+    implementation "mysql:mysql-connector-java:$version_mysql"
+
     // Spring boot test
     testImplementation "org.springframework.boot:spring-boot-starter-test:$version_springBootTest"
+    testImplementation "com.h2database:h2"
 
     testImplementation project(path: ":${MODULE_APP_CORE}", configuration: "testArtifacts")
     testImplementation project(path: ":${MODULE_APP_LIB}", configuration: "testArtifacts")

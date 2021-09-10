@@ -13,6 +13,8 @@ buildscript {
 
         // Library
         version_jackson_kotlin = "2.12.5"
+        version_hikariCP = "5.0.0"
+        version_mysql = "8.0.26"
 
         // Testing & Code quality
         version_junit5 = "5.7.2"
