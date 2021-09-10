@@ -16,16 +16,18 @@ sourceSets {
 
     main {
         java {
-            srcDirs = ["src/$buildConfig/java", "src/$buildConfig/kotlin"]
+            srcDirs += ["src/$buildConfig/java", "src/$buildConfig/kotlin"]
         }
 
         resources {
-            srcDirs = ["src/$buildConfig/resources"]
+            srcDirs += ["src/$buildConfig/resources"]
         }
     }
 }
 
 dependencies {
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:$version_springBoot"
+
     implementation project(":${MODULE_APP_CORE}")
     implementation project(":${MODULE_APP_LIB}")
 
@@ -37,13 +39,11 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-validation:$version_springBoot"
     implementation "org.springframework.boot:spring-boot-starter-undertow:$version_springBoot"
 
-    // Spring boot test
-    testImplementation "org.springframework.boot:spring-boot-starter-test:$version_springBootTest"
-
     // Jackson Kotlin support
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:$version_jackson_kotlin"
 
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:$version_springBoot"
+    // Spring boot test
+    testImplementation "org.springframework.boot:spring-boot-starter-test:$version_springBootTest"
 
     testImplementation project(path: ":${MODULE_APP_CORE}", configuration: "testArtifacts")
     testImplementation project(path: ":${MODULE_APP_LIB}", configuration: "testArtifacts")
