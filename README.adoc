@@ -36,7 +36,7 @@ Template branches:
 ** link:{link-tool-gradle}[Gradle 7.1]
 
 * Languages and Platforms:
-** link:{link-lang-jdk}[Java 15]
+** link:{link-lang-jdk}[Java 17]
 ** link:{link-lang-kotlin}[Kotlin 1.5]
 ** link:{link-lang-groovy}[Groovy 3.0]
 

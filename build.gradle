@@ -1,8 +1,8 @@
 buildscript {
     ext {
         // lang
-        version_target_jvm = 13
-        version_kotlin = "1.5.30"
+        version_target_jvm = 15
+        version_kotlin = "1.5.31"
         version_javax_validation = "2.0.1.Final"
         version_javax_inject = "1"
         version_jsr305 = "3.0.2"
